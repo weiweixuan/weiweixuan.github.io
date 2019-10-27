@@ -4,15 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/index.css" />
     <title>Document</title>
-    <style>
-      .main {
-        font-size: 100px;
-        color: red;
-      }
-    </style>
   </head>
   <body>
-    <div class="main">我是唯味轩的主页是 的 是我</div>
+    <div id="el">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            我叫魏玮璇，我来自安徽滁州
+          </div>
+          <div class="swiper-slide">我今年24岁</div>
+          <div class="swiper-slide">是个web前端开发</div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
   </body>
+  <script>
+    new Vue({
+      el: '#el',
+      data: {
+        name: 'weiwei'
+      },
+      mounted() {
+        var swiper = new Swiper('.swiper-container', {
+          direction: 'vertical',
+          followFinger: false,
+          speed: 800,
+          mousewheel: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          }
+        })
+      }
+    })
+  </script>
 </html>
