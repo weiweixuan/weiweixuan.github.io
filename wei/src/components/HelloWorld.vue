@@ -1,0 +1,39 @@
+<template>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+    <h2>{{ name }}</h2>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+
+@Component
+export default class HelloWorld extends Vue {
+  @Prop() private msg!: string;
+  data(): object {
+    return { name: "这是我用vue3.0 + ts 的个人博客页面" };
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="stylus">
+h3 {
+  margin: 40px 0 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
+}
+</style>
