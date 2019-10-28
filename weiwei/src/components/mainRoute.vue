@@ -65,7 +65,7 @@ export default {
     //这里存放数据
     return {
       value: "",
-      show: true,
+      show: false,
       tabList: [
         { title: "home", path: "/", checked: true },
         { title: "进阶博文", path: "/Advanced", checked: false },
