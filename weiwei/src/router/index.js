@@ -12,22 +12,22 @@ const routes = [
   },
   {
     path: '/advanced',
-    name: 'about',
+    name: 'advanced',
     component: () => import('../views/Advanced.vue')
   },
   {
     path: '/dailyquestion',
-    name: 'about',
+    name: 'dailyquestion',
     component: () => import('../views/DailyQuestion.vue')
   },
   {
     path: '/job',
-    name: 'about',
+    name: 'job',
     component: () => import('../views/Job.vue')
   },
   {
     path: '/wisdom',
-    name: 'about',
+    name: 'wisdom',
     component: () => import('../views/Wisdom.vue')
   }
 ]
