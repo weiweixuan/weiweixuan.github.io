@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-8d46e202"],{"462d":function(n,t,a){"use strict";var e=a("82aa"),s=a.n(e);s.a},"72d9":function(n,t,a){"use strict";a.r(t);var e=function(){var n=this,t=n.$createElement,a=n._self._c||t;return a("div",{staticClass:"Wisdom"},[n._v(" 思慧泉涌 ")])},s=[],c={name:"Wisdom"},i=c,u=(a("462d"),a("2877")),o=Object(u["a"])(i,e,s,!1,null,null,null);t["default"]=o.exports},"82aa":function(n,t,a){}}]);
+//# sourceMappingURL=chunk-8d46e202.2db80b29.js.map
