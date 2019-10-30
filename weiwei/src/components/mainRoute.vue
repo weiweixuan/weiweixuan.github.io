@@ -15,7 +15,7 @@
         </van-search>
         <!-- 全屏显示navbar -->
         <div class="items">
-          <router-link :to="item.path" :class="{ item: true, underline: item.checked }" v-for="(item, keys) in tabList" :key="item.title">
+          <router-link :to="item.path" :class="{ item: true, underline: item.checked }" v-for="(item, keys) in navbar || []" :key="item.title">
             <span @click="handlechageItem(keys)">{{
               item.title
             }}</span>
@@ -26,7 +26,7 @@
     <!-- 左侧抽屉 -->
     <van-popup v-model="show" position="left" :style="{ width: '30%', height: '100%' }">
       <div class="navbar" @click="handleChangeNavbar()">
-        <div class="NavItem" v-for="(item, keys) in tabList" :key="item.title">
+        <div class="NavItem" v-for="(item, keys) in navbar" :key="item.title">
           <router-link :to="item.path" :class="{ item: true, underline: item.checked }"><span @click="handlechageItem(keys)">{{
               item.title
             }}</span></router-link>
@@ -39,7 +39,8 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-
+import { mapState } from "vuex";
+import { CHANGE_NAVBAR } from "../store/mutation-types/navbar";
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
@@ -47,19 +48,11 @@ export default {
     //这里存放数据
     return {
       value: "",
-      show: false,
-      tabList: [
-        { title: "home", path: "/", checked: true },
-        { title: "进阶博文", path: "/Advanced", checked: false },
-        { title: "每日壹题", path: "/DailyQuestion", checked: false },
-        { title: "慧思泉涌", path: "/Wisdom", checked: false },
-        { title: "求职内推", path: "/Job", checked: false },
-        { title: "Github", path: "/", checked: false }
-      ]
+      show: false
     };
   },
   //监听属性 类似于data概念
-  computed: {},
+  computed: { ...mapState(["navbar"]) },
   //监控data中的数据变化
   watch: {},
   //方法集合
@@ -72,23 +65,21 @@ export default {
     },
     handlechageItem(key) {
       // 个人GitHub单独处理
-      if (key === this.tabList.length - 1) {
-        window.open("https://github.com/weiweixuan", "_blank");
+      if (key === this.navbar.length - 1) {
+        // window.open("https://github.com/weiweixuan", "_blank");
+        location.href = "https://github.com/weiweixuan";
         return;
       }
-      this.tabList.forEach((element, index) => {
-        if (index == key) {
-          element.checked = true;
-        } else {
-          element.checked = false;
-        }
-      });
+
+      this.$store.commit(CHANGE_NAVBAR, key);
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
-  mounted() {},
+  mounted() {
+    console.log(this.$store.state.navbar, this.navbar);
+  },
   beforeCreate() {}, //生命周期 - 创建之前
   befopxount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
