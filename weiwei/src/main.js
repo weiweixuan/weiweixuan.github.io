@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Button, Field, Rate, Search, Image, Popup, Icon } from 'vant'
+import { Button, Field, Rate, Search, Image, Popup, Icon,Lazyload } from 'vant'
 
 Vue.use(Button)
   .use(Field)
@@ -11,6 +11,7 @@ Vue.use(Button)
   .use(Image)
   .use(Popup)
   .use(Icon)
+  .use(Lazyload)
 
 Vue.config.productionTip = false
 

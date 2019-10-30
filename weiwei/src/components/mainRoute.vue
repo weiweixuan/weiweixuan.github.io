@@ -2,52 +2,34 @@
 <template>
   <div>
     <div class="nav">
-      <!-- <router-link to="/">111</router-link> |
-    <router-link to="/about">About</router-link> -->
       <div class="left">
+        <!-- 头像 -->
         <img class="avator" src="../assets/avator.png" />
-        <van-icon
-          name="bars"
-          @click="handleChangeNavbar()"
-          size="26px"
-          class="bars"
-        />
+        <!-- 汉堡包分类 -->
+        <van-icon name="bars" @click="handleChangeNavbar()" size="26px" class="bars" />
         <span>rodgers 博客</span>
       </div>
       <div class="right">
-        <van-search
-          class="input"
-          v-model="value"
-          placeholder="请输入关键词"
-          show-action
-          shape="round"
-          @search="onSearch()"
-        >
+        <van-search class="input" v-model="value" placeholder="请输入关键词" show-action shape="round" @search="onSearch()">
           <div slot="action" @click="onSearch()">搜索</div>
         </van-search>
+        <!-- 全屏显示navbar -->
         <div class="items">
-          <router-link
-            :to="item.path"
-            :class="{ item: true, underline: item.checked }"
-            v-for="item in tabList"
-            :key="item.title"
-            >{{ item.title }}</router-link
-          >
+          <router-link :to="item.path" :class="{ item: true, underline: item.checked }" v-for="(item, keys) in tabList" :key="item.title">
+            <span @click="handlechageItem(keys)">{{
+              item.title
+            }}</span>
+          </router-link>
         </div>
       </div>
     </div>
-    <van-popup
-      v-model="show"
-      position="left"
-      :style="{ width: '30%', height: '100%' }"
-    >
+    <!-- 左侧抽屉 -->
+    <van-popup v-model="show" position="left" :style="{ width: '30%', height: '100%' }">
       <div class="navbar" @click="handleChangeNavbar()">
-        <div class="NavItem" v-for="item in tabList" :key="item.title">
-          <router-link
-            :to="item.path"
-            :class="{ item: true, underline: item.checked }"
-            >{{ item.title }}</router-link
-          >
+        <div class="NavItem" v-for="(item, keys) in tabList" :key="item.title">
+          <router-link :to="item.path" :class="{ item: true, underline: item.checked }"><span @click="handlechageItem(keys)">{{
+              item.title
+            }}</span></router-link>
         </div>
       </div>
     </van-popup>
@@ -87,6 +69,20 @@ export default {
     },
     handleChangeNavbar() {
       this.show = !this.show;
+    },
+    handlechageItem(key) {
+      // 个人GitHub单独处理
+      if (key === this.tabList.length - 1) {
+        window.open("https://github.com/weiweixuan", "_blank");
+        return;
+      }
+      this.tabList.forEach((element, index) => {
+        if (index == key) {
+          element.checked = true;
+        } else {
+          element.checked = false;
+        }
+      });
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
@@ -122,8 +118,8 @@ export default {
       }
 
       .avator {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         margin-right: 10px;
         border-radius: 50%;
       }
@@ -147,6 +143,8 @@ export default {
     .item {
       margin: 0 10px;
       border-bottom: 2px solid transparent;
+      text-decoration: none;
+      color: #000;
     }
 
     .item:hover {
@@ -202,6 +200,17 @@ export default {
 
     .NavItem {
       padding: 10px;
+
+      .item {
+        margin: 0 10px;
+        border-bottom: 2px solid transparent;
+        text-decoration: none;
+        color: #000;
+      }
+
+      .item.underline {
+        border-bottom: 2px solid skyblue;
+      }
     }
   }
 }
