@@ -1,6 +1,6 @@
 <template>
   <div class="DailyQuestion">
-    每日壹题
+    好题精选
   </div>
 </template>
 
