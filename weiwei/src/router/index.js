@@ -21,9 +21,9 @@ const routes = [
     component: () => import('../views/DailyQuestion.vue')
   },
   {
-    path: '/job',
-    name: 'job',
-    component: () => import('../views/Job.vue')
+    path: '/Article',
+    name: 'Article',
+    component: () => import('../views/Article.vue')
   },
   {
     path: '/wisdom',

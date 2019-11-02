@@ -1,6 +1,6 @@
 <template>
-  <div class="Job">
-    求职内推
+  <div class="Article">
+    好文分享
   </div>
 </template>
 
@@ -8,12 +8,12 @@
 // @ is an alias to /src
 
 export default {
-  name: "Job"
+  name: "article"
 };
 </script>
 
 <style lang="stylus">
-.Job {
+.Article {
   text-align: center;
   margin-top: 100px;
   font-size: 30px;
