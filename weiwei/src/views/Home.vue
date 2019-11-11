@@ -40,13 +40,20 @@ export default {
   mounted() {
     console.log(this.home, "home");
   }
+  // activated() {
+  //   console.log("组件被缓存了");
+  // },
+  // deactivated() {
+  //   console.log("组件取消缓存了");
+  // }
 };
 </script>
 
 <style lang="stylus">
 @media screen and (min-width: 1050px) {
   .home {
-    min-height: calc(100vh - 75px);
+    margin-top: 74px;
+    min-height: calc(100vh - 74px);
     display: flex;
     flex-direction: column;
 
@@ -113,7 +120,8 @@ export default {
 
 @media screen and (min-width: 768px) and (max-width: 1050px) {
   .home {
-    min-height: calc(100vh - 75px);
+    margin-top: 74px;
+    min-height: calc(100vh - 74px);
     display: flex;
     flex-direction: column;
 
@@ -180,7 +188,8 @@ export default {
 
 @media screen and (max-width: 768px) {
   .home {
-    min-height: calc(100vh - 75px);
+    margin-top: 74px;
+    min-height: calc(100vh - 74px);
     display: flex;
     flex-direction: column;
 
