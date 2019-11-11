@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <HeaderRoute></HeaderRoute>
-    <router-view />
+    <keep-alive include="home">
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 

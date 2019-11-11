@@ -70,15 +70,27 @@ export default {
         location.href = "https://github.com/weiweixuan";
         return;
       }
-
       this.$store.commit(CHANGE_NAVBAR, key);
+    },
+    // 刷新后，根据pathName配置路由
+    reflash() {
+      let pathName = location.pathname,
+        index = 0;
+      if (pathName != "/") {
+        index = this.navbar.findIndex(
+          item => item.path != "/" && pathName.indexOf(item.path) > -1
+        );
+        index = index > -1 ? index : 0;
+      }
+      this.handlechageItem(index);
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    console.log(this.$store.state.navbar, this.navbar);
+    // console.log(this.$store.state.navbar, this.navbar, "99999999999999");
+    this.reflash();
   },
   beforeCreate() {}, //生命周期 - 创建之前
   befopxount() {}, //生命周期 - 挂载之前
@@ -92,6 +104,13 @@ export default {
 <style scoped lang='stylus'>
 @media screen and (min-width: 1050px) {
   .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 74px;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
     background: #fff;
     border-bottom: 1px solid #ddd;
     padding: 10px 50px;
@@ -150,6 +169,13 @@ export default {
 
 @media screen and (max-width: 1050px) {
   .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 74px;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
     background: #fff;
     border-bottom: 1px solid #ddd;
     padding: 10px;
