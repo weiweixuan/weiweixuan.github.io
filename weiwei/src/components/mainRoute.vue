@@ -24,13 +24,23 @@
       </div>
     </div>
     <!-- 左侧抽屉 -->
-    <van-popup v-model="show" position="left" :style="{ width: '30%', height: '100%' }">
+    <van-popup v-model="show" position="left" :style="{ width: '60%', height: '100%' }">
       <div class="navbar" @click="handleChangeNavbar()">
         <div class="NavItem" v-for="(item, keys) in navbar" :key="item.title">
           <router-link :to="item.path" :class="{ item: true, underline: item.checked }"><span @click="handlechageItem(keys)">{{
               item.title
             }}</span></router-link>
         </div>
+      </div>
+      <!-- 好题精选部分 -->
+      <div class="questionList" v-if='this.$route.path === "/DailyQuestion"'>
+        <van-collapse v-model="index" accordion>
+          <van-collapse-item style="paddingLeft:10px" v-for="(item,keys) in dailyQuestion.leftList" :key='keys' :title="item.title" :name="keys">
+            <div v-for="(child,childKey) in item.list" :key='childKey' :class="{active:keys === getCheckList[0] && childKey === getCheckList[1],items_question:true}" @click="handleChange([keys,childKey])">
+              {{child.subTitle}}
+            </div>
+          </van-collapse-item>
+        </van-collapse>
       </div>
     </van-popup>
   </div>
@@ -48,11 +58,13 @@ export default {
     //这里存放数据
     return {
       value: "",
-      show: false
+      show: false,
+      index: 0
     };
   },
+  props: ["getCheckList"],
   //监听属性 类似于data概念
-  computed: { ...mapState(["navbar"]) },
+  computed: { ...mapState(["navbar"]), ...mapState(["dailyQuestion"]) },
   //监控data中的数据变化
   watch: {},
   //方法集合
@@ -62,6 +74,7 @@ export default {
     },
     handleChangeNavbar() {
       this.show = !this.show;
+      this.index = this.$parent.$refs.items.index;
     },
     handlechageItem(key) {
       // 个人GitHub单独处理
@@ -83,12 +96,21 @@ export default {
         index = index > -1 ? index : 0;
       }
       this.handlechageItem(index);
+    },
+    handleChange(arr) {
+      this.$emit("changeList", arr);
+      this.$parent.$refs.items.getContent(arr);
+      this.$parent.$refs.items.changeIndex(this.index);
+      // 关闭弹窗
+      this.show = !this.show;
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
+    console.log(this.dailyQuestion, this.$route.path, "000000000000");
+
     // console.log(this.$store.state.navbar, this.navbar, "99999999999999");
     this.reflash();
   },
@@ -109,7 +131,7 @@ export default {
     left: 0;
     height: 74px;
     width: 100%;
-    z-index: 1000;
+    z-index: 2000;
     box-sizing: border-box;
     background: #fff;
     border-bottom: 1px solid #ddd;
@@ -174,7 +196,7 @@ export default {
     left: 0;
     height: 74px;
     width: 100%;
-    z-index: 1000;
+    z-index: 2000;
     box-sizing: border-box;
     background: #fff;
     border-bottom: 1px solid #ddd;
@@ -227,6 +249,26 @@ export default {
 
       .item.underline {
         border-bottom: 2px solid skyblue;
+      }
+    }
+  }
+
+  .questionList {
+    margin-top: 10px;
+    border-top: 10px solid #3eaf7c;
+
+    .active {
+      color: #3EAF7C;
+    }
+
+    .items_question {
+      font-size: 14px;
+      padding: 3px 0;
+      cursor: pointer;
+      transition: all linear 0.25s;
+
+      &:hover {
+        transform: translateX(5px);
       }
     }
   }
