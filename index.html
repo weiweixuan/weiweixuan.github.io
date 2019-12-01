@@ -1,4 +1,31 @@
 <!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=/favicon.ico><title>rodgers 博客</title><style>body,
       html {
         min-width: 360px;
-      }</style><link href=/css/chunk-5f781121.cc86cbd0.css rel=prefetch><link href=/css/chunk-79643ce6.0cab63cd.css rel=prefetch><link href=/css/chunk-8d46e202.82c52969.css rel=prefetch><link href=/css/chunk-f1cc4ece.44859c9a.css rel=prefetch><link href=/js/chunk-5f781121.399925bd.js rel=prefetch><link href=/js/chunk-79643ce6.e7db0b1a.js rel=prefetch><link href=/js/chunk-8d46e202.0b9b16ec.js rel=prefetch><link href=/js/chunk-f1cc4ece.1e41b332.js rel=prefetch><link href=/css/app.bdc6aeb6.css rel=preload as=style><link href=/css/chunk-vendors.4bbd4793.css rel=preload as=style><link href=/js/app.ed49e363.js rel=preload as=script><link href=/js/chunk-vendors.329808aa.js rel=preload as=script><link href=/css/chunk-vendors.4bbd4793.css rel=stylesheet><link href=/css/app.bdc6aeb6.css rel=stylesheet></head><body><noscript><strong>We're sorry but weiwei doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.329808aa.js></script><script src=/js/app.ed49e363.js></script></body></html>
+      }</style><link href=/css/chunk-5f781121.cc86cbd0.css rel=prefetch><link href=/css/chunk-79643ce6.ed18b54a.css rel=prefetch><link href=/css/chunk-8d46e202.82c52969.css rel=prefetch><link href=/css/chunk-f1cc4ece.44859c9a.css rel=prefetch><link href=/js/chunk-5f781121.399925bd.js rel=prefetch><link href=/js/chunk-79643ce6.6107b875.js rel=prefetch><link href=/js/chunk-8d46e202.5c480f7b.js rel=prefetch><link href=/js/chunk-f1cc4ece.1e41b332.js rel=prefetch><link href=/css/app.d9c9e761.css rel=preload as=style><link href=/css/chunk-vendors.4bbd4793.css rel=preload as=style><link href=/js/app.99b21672.js rel=preload as=script><link href=/js/chunk-vendors.329808aa.js rel=preload as=script><link href=/css/chunk-vendors.4bbd4793.css rel=stylesheet><link href=/css/app.d9c9e761.css rel=stylesheet></head><body><noscript><strong>We're sorry but weiwei doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script>// window.onload = function() {
+      //   getRem(720, 10);
+      // };
+      // window.onresize = function() {
+      //   getRem(720, 10);
+      // };
+      // function getRem(pwidth, prem) {
+      //   var html = document.getElementsByTagName("html")[0];
+      //   var oWidth =
+      //     document.body.clientWidth || document.documentElement.clientWidth;
+      //   html.style.fontSize = (oWidth / pwidth) * prem + "px";
+      // }
+      !(function(n) {
+        var e = n.document,
+          t = e.documentElement,
+          i = 720,
+          d = i / 100,
+          o = "orientationchange" in n ? "orientationchange" : "resize",
+          a = function() {
+            var n = t.clientWidth || 500;
+            n > 720 && (n = 720);
+            n < 500 && (n = 500);
+            t.style.fontSize = n / d + "px";
+          };
+        e.addEventListener &&
+          (n.addEventListener(o, a, !1),
+          e.addEventListener("DOMContentLoaded", a, !1));
+      })(window);</script><script src=/js/chunk-vendors.329808aa.js></script><script src=/js/app.99b21672.js></script></body></html>

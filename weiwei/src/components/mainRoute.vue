@@ -6,38 +6,76 @@
         <!-- 头像 -->
         <img class="avator" src="../assets/avator.png" />
         <!-- 汉堡包分类 -->
-        <van-icon name="bars" @click="handleChangeNavbar()" size="26px" class="bars" />
+        <van-icon
+          name="bars"
+          @click="handleChangeNavbar()"
+          size="0.26rem"
+          class="bars"
+        />
         <span>rodgers 博客</span>
       </div>
       <div class="right">
-        <van-search class="input" v-model="value" placeholder="请输入关键词" show-action shape="round" @search="onSearch()">
+        <van-search
+          class="input"
+          v-model="value"
+          placeholder="请输入关键词"
+          show-action
+          shape="round"
+          @search="onSearch()"
+        >
           <div slot="action" @click="onSearch()">搜索</div>
         </van-search>
         <!-- 全屏显示navbar -->
         <div class="items">
-          <router-link :to="item.path" :class="{ item: true, underline: item.checked }" v-for="(item, keys) in navbar || []" :key="item.title">
-            <span @click="handlechageItem(keys)">{{
-              item.title
-            }}</span>
+          <router-link
+            :to="item.path"
+            :class="{ item: true, underline: item.checked }"
+            v-for="(item, keys) in navbar || []"
+            :key="item.title"
+          >
+            <span @click="handlechageItem(keys)">{{ item.title }}</span>
           </router-link>
         </div>
       </div>
     </div>
     <!-- 左侧抽屉 -->
-    <van-popup v-model="show" position="left" :style="{ width: '60%', height: '100%' }">
+    <van-popup
+      v-model="show"
+      position="left"
+      :style="{ width: '60%', height: '100%' }"
+    >
       <div class="navbar" @click="handleChangeNavbar()">
         <div class="NavItem" v-for="(item, keys) in navbar" :key="item.title">
-          <router-link :to="item.path" :class="{ item: true, underline: item.checked }"><span @click="handlechageItem(keys)">{{
+          <router-link
+            :to="item.path"
+            :class="{ item: true, underline: item.checked }"
+            ><span @click="handlechageItem(keys)">{{
               item.title
-            }}</span></router-link>
+            }}</span></router-link
+          >
         </div>
       </div>
       <!-- 好题精选部分 -->
-      <div class="questionList" v-if='this.$route.path === "/DailyQuestion"'>
+      <div class="questionList" v-if="this.$route.path === '/DailyQuestion'">
         <van-collapse v-model="index" accordion>
-          <van-collapse-item style="paddingLeft:10px" v-for="(item,keys) in dailyQuestion.leftList" :key='keys' :title="item.title" :name="keys">
-            <div v-for="(child,childKey) in item.list" :key='childKey' :class="{active:keys === getCheckList[0] && childKey === getCheckList[1],items_question:true}" @click="handleChange([keys,childKey])">
-              {{child.subTitle}}
+          <van-collapse-item
+            style="paddingLeft:.10rem"
+            v-for="(item, keys) in dailyQuestion.leftList"
+            :key="keys"
+            :title="item.title"
+            :name="keys"
+          >
+            <div
+              v-for="(child, childKey) in item.list"
+              :key="childKey"
+              :class="{
+                active:
+                  keys === getCheckList[0] && childKey === getCheckList[1],
+                items_question: true
+              }"
+              @click="handleChange([keys, childKey])"
+            >
+              {{ child.subTitle }}
             </div>
           </van-collapse-item>
         </van-collapse>
@@ -115,7 +153,7 @@ export default {
     this.reflash();
   },
   beforeCreate() {}, //生命周期 - 创建之前
-  befopxount() {}, //生命周期 - 挂载之前
+  beforemount() {}, //生命周期 - 挂载之前
   beforeUpdate() {}, //生命周期 - 更新之前
   updated() {}, //生命周期 - 更新之后
   beforeDestroy() {}, //生命周期 - 销毁之前
@@ -123,25 +161,27 @@ export default {
   activated() {} //如果页面有keep-alive缓存功能，这个函数会触发
 };
 </script>
-<style scoped lang='stylus'>
+<style scoped lang="stylus">
 @media screen and (min-width: 1050px) {
   .nav {
+     min-width: 360px;
+    overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
-    height: 74px;
+    height: .74rem;
     width: 100%;
     z-index: 2000;
     box-sizing: border-box;
     background: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 50px;
+    border-bottom: .01rem solid #ddd;
+    padding: .10rem .50rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .left {
-      font-size: 24px;
+      font-size: .24rem;
       display: flex;
       align-items: center;
 
@@ -150,9 +190,9 @@ export default {
       }
 
       .avator {
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
+        width: .40rem;
+        height: .40rem;
+        margin-right: .10rem;
         border-radius: 50%;
       }
     }
@@ -162,7 +202,7 @@ export default {
       align-items: center;
 
       .input {
-        margin-right: 20px;
+        margin-right: .20rem;
       }
     }
   }
@@ -172,47 +212,51 @@ export default {
   }
 
   .items {
+      font-size: 0.14rem;
     .item {
-      margin: 0 10px;
-      border-bottom: 2px solid transparent;
+      margin: 0 .10rem;
+      border-bottom: .02rem solid transparent;
       text-decoration: none;
+      line-height :.74rem;
       color: #000;
     }
 
     .item:hover {
-      border-bottom: 2px solid skyblue;
+      border-bottom: .02rem solid skyblue;
     }
 
     .item.underline {
-      border-bottom: 2px solid skyblue;
+      border-bottom: .02rem solid skyblue;
     }
   }
 }
 
 @media screen and (max-width: 1050px) {
   .nav {
+     min-width: 360px;
+    overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
-    height: 74px;
+    height: .74rem;
     width: 100%;
     z-index: 2000;
     box-sizing: border-box;
     background: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
+    border-bottom: .01rem solid #ddd;
+    padding: .10rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .left {
-      font-size: 20px;
+      font-size: .20rem;
       display: flex;
       align-items: center;
 
       .bars {
-        transform: translateY(2px);
-        margin-right: 10px;
+        transform: translateY(.02rem);
+        margin-right: .10rem;
       }
 
       .avator {
@@ -225,7 +269,7 @@ export default {
       align-items: center;
 
       .input {
-        width: 180px;
+        width: 2.60rem;
       }
     }
   }
@@ -238,37 +282,38 @@ export default {
     display: block;
 
     .NavItem {
-      padding: 10px;
+      font-size:0.20rem;
+      padding: .10rem;
 
       .item {
-        margin: 0 10px;
-        border-bottom: 2px solid transparent;
+        margin: 0 .10rem;
+        border-bottom: .02rem solid transparent;
         text-decoration: none;
         color: #000;
       }
 
       .item.underline {
-        border-bottom: 2px solid skyblue;
+        border-bottom: .02rem solid skyblue;
       }
     }
   }
 
   .questionList {
-    margin-top: 10px;
-    border-top: 10px solid #3eaf7c;
+    margin-top: .10rem;
+    border-top: .10rem solid #3eaf7c;
 
     .active {
       color: #3EAF7C;
     }
 
     .items_question {
-      font-size: 14px;
-      padding: 3px 0;
+      font-size: .14rem;
+      padding: .03rem 0;
       cursor: pointer;
       transition: all linear 0.25s;
 
       &:hover {
-        transform: translateX(5px);
+        transform: translateX(.05rem);
       }
     }
   }

@@ -3,10 +3,24 @@
     <!-- 左中右结构 -->
     <div class="left">
       <van-collapse v-model="index" accordion>
-        <van-collapse-item style="paddingLeft:10px" v-for="(item,keys) in dailyQuestion.leftList" :key='keys' :title="item.title" :name="keys">
+        <van-collapse-item
+          style="paddingLeft:.10rem"
+          v-for="(item, keys) in dailyQuestion.leftList"
+          :key="keys"
+          :title="item.title"
+          :name="keys"
+        >
           <!-- 子内容遍历 -->
-          <div v-for="(child,childKey) in item.list" :key='childKey' :class="{active:keys === getCheckList[0] && childKey === getCheckList[1],items:true}" @click="handleChange([keys,childKey])">
-            {{child.subTitle}}
+          <div
+            v-for="(child, childKey) in item.list"
+            :key="childKey"
+            :class="{
+              active: keys === getCheckList[0] && childKey === getCheckList[1],
+              items: true
+            }"
+            @click="handleChange([keys, childKey])"
+          >
+            {{ child.subTitle }}
           </div>
         </van-collapse-item>
       </van-collapse>
@@ -14,36 +28,63 @@
     <!-- 内容区 -->
     <div class="center">
       <div class="contentTitle">
-        {{content.subTitle}}
+        {{ content.subTitle }}
       </div>
-      <div v-for='(item ,keys) in content.answer' :key='keys'>
+      <div v-if="content.explanation" class="explanation">
+        {{ content.explanation }}
+      </div>
+      <div v-for="(item, keys) in content.answer" :key="keys">
         <!-- 提示文字 -->
-        <div v-if='item.analysis' class="analysis">
+        <div v-if="item.analysis" class="analysis">
           <div class="showInfo">
             <van-icon name="fire" class="sm_title" />
-            <span style="marginLeft:6px">小提示</span>
+            <span style="marginLeft:.06rem">小提示</span>
           </div>
-          <mavon-editor class="md code" :value="item.analysis" :subfield="false" :defaultOpen="'preview'" :boxShadow='true' :previewBackground='"#fff"' :toolbarsFlag="false" :editable="false" :scrollStyle="true" :ishljs="true"></mavon-editor>
+          <mavon-editor
+            class="md code"
+            :value="item.analysis"
+            :subfield="false"
+            :defaultOpen="'preview'"
+            :boxShadow="true"
+            :previewBackground="'#fff'"
+            :toolbarsFlag="false"
+            :editable="false"
+            :scrollStyle="true"
+            :ishljs="true"
+          ></mavon-editor>
         </div>
         <!-- 上代码 -->
-        <div v-if='item.code'>
+        <div v-if="item.code">
           <div class="showInfo">
             <van-icon name="comment" class="sm_title" />
-            <span style="marginLeft:6px">上代码</span>
+            <span style="marginLeft:.06rem">上代码</span>
           </div>
-          {{item.analysis}}
-          <mavon-editor class="md code" :value="complateCode(item.code)" :subfield="false" :defaultOpen="'preview'" :boxShadow='true' :previewBackground='"#fff"' :toolbarsFlag="false" :editable="false" :scrollStyle="true" :ishljs="true"></mavon-editor>
+          {{ item.analysis }}
+          <mavon-editor
+            class="md code"
+            :value="complateCode(item.code)"
+            :subfield="false"
+            :defaultOpen="'preview'"
+            :boxShadow="true"
+            :previewBackground="'#fff'"
+            :toolbarsFlag="false"
+            :editable="false"
+            :scrollStyle="true"
+            :ishljs="true"
+          ></mavon-editor>
         </div>
       </div>
-      <div>
-      </div>
-
+      <div></div>
     </div>
     <div class="right">
-      <div class="item" v-for=" (item ,keys) in dailyQuestion.rightNotice" :key='keys'>
-        <span class="title">{{item.title}}</span>
-        <span class="subTitle">{{item.subTitle}}</span>
-        <img src="../assets/wx.jpg" class="imgEwm" alt="">
+      <div
+        class="item"
+        v-for="(item, keys) in dailyQuestion.rightNotice"
+        :key="keys"
+      >
+        <span class="title">{{ item.title }}</span>
+        <span class="subTitle">{{ item.subTitle }}</span>
+        <img src="../assets/wx.jpg" class="imgEwm" alt="" />
       </div>
     </div>
   </div>
@@ -95,80 +136,89 @@ export default {
 @media screen and (min-width: 1050px) {
   .DailyQuestion {
     display: flex;
-    margin-top: 74px;
+    margin-top: .74rem;
 
     .left {
-      width: 300px;
+      width: 3rem;
       position: fixed;
-      top: 75px;
+      top: .75rem;
       left: 0;
-      height: calc(100vh - 74px);
-      border-right: 1px solid #eee;
+      height: calc(100vh - .74rem);
+      border-right: .01rem solid #eee;
       overflow-y: auto;
     }
 
     .center {
-      width: calc(100% - 550px);
-      margin-left: 300px;
-      padding-left: 10px;
+      width: calc(100% - 5.50rem);
+      margin-left: 3rem;
+      padding-left: .10rem;
 
       .contentTitle {
-        padding: 20px 20px 10px 20px;
+        padding: .20rem .20rem .10rem .20rem;
         font-weight: 700;
-        font-size: 26px;
+        font-size: .26rem;
 
         &:before {
           content: '';
-          padding: 0 3px;
+          padding: 0 .03rem;
           background: #3eaf7c;
-          margin-right: 10px;
+          margin-right: .10rem;
         }
       }
 
       .showInfo {
         display: flex;
         align-items: center;
-        font-size: 18px;
+        font-size: .18rem;
         color: #3eaf7c;
-        padding: 20px;
+        padding: .20rem;
 
         .sm_title {
           color: '#3eaf7c';
-          font-size: 24px;
+          font-size: .24rem;
         }
       }
 
       .code {
-        font-size: 20px;
+        font-size: .20rem;
+      }
+
+      .explanation {
+        padding: 0 .20rem;
+        font-size: .20rem;
+        &:before {
+          content: '补充解释：';
+          display: inline-block;
+        }
       }
     }
 
     .right {
-      width: 250px;
+      width: 2.50rem;
       height: 100vh;
       position: fixed;
-      top: 75px;
+      top: .75rem;
       right: 0;
 
       .item {
-        margin-top: 50px;
-        font-size: 14px;
+        margin-top: .50rem;
+        font-size: .14rem;
         display: flex;
         flex-direction: column;
         align-items: center;
 
         .title {
           color: #2878FF;
-          margin-bottom: 10px;
+          margin-bottom: .10rem;
         }
 
         .subTitle {
-          margin-bottom: 16px;
+          margin-bottom: .16rem;
         }
 
         .imgEwm {
-          width: 150px;
-          height: 150px;
+          width: 1.50rem;
+          height: 1.50rem;
         }
       }
     }
@@ -179,18 +229,18 @@ export default {
 
     .items {
       cursor: pointer;
-      font-size: 14px;
-      padding: 3px 0;
+      font-size: .14rem;
+      padding: .03rem 0;
       transition: all linear 0.25s;
 
       &:hover {
-        transform: translateX(5px);
+        transform: translateX(.05rem);
       }
     }
 
     .showContent {
-      border-radius: 10px;
-      font-size: 20px;
+      border-radius: .10rem;
+      font-size: .20rem;
     }
   }
 }
@@ -198,51 +248,60 @@ export default {
 @media screen and (min-width: 768px) and (max-width: 1200px) {
   .DailyQuestion {
     display: flex;
-    margin-top: 74px;
+    margin-top: .74rem;
 
     .left {
-      width: 250px;
+      width: 2.50rem;
       position: fixed;
-      top: 75px;
+      top: .75rem;
       left: 0;
-      height: calc(100vh - 74px);
-      border-right: 1px solid #eee;
+      height: calc(100vh - .74rem);
+      border-right: .01rem solid #eee;
       overflow-y: auto;
     }
 
     .center {
-      width: calc(100% - 250px);
-      margin-left: 250px;
-      padding-left: 10px;
+      width: calc(100% - 2.50rem);
+      margin-left: 2.50rem;
+      padding-left: .10rem;
 
       .contentTitle {
-        padding: 20px 20px 10px 20px;
+        padding: .20rem .20rem .10rem .20rem;
         font-weight: 700;
-        font-size: 26px;
+        font-size: .26rem;
 
         &:before {
           content: '';
-          padding: 0 3px;
+          padding: 0 .03rem;
           background: #3eaf7c;
-          margin-right: 10px;
+          margin-right: .10rem;
         }
       }
 
       .showInfo {
         display: flex;
         align-items: center;
-        font-size: 20px;
+        font-size: .20rem;
         color: #3eaf7c;
-        padding: 20px;
+        padding: .20rem;
 
         .sm_title {
           color: '#3eaf7c';
-          font-size: 24px;
+          font-size: .24rem;
         }
       }
 
       .code {
-        font-size: 20px;
+        font-size: .20rem;
+      }
+
+      .explanation {
+        padding: 0 .20rem;
+        font-size: .20rem;
+        &:before {
+          content: '补充解释：';
+          display: inline-block;
+        }
       }
     }
 
@@ -256,18 +315,18 @@ export default {
 
     .items {
       cursor: pointer;
-      font-size: 14px;
-      padding: 3px 0;
+      font-size: .14rem;
+      padding: .03rem 0;
       transition: all linear 0.25s;
 
       &:hover {
-        transform: translateX(5px);
+        transform: translateX(.05rem);
       }
     }
 
     .showContent {
-      border-radius: 10px;
-      font-size: 20px;
+      border-radius: .10rem;
+      font-size: .20rem;
     }
   }
 }
@@ -275,7 +334,7 @@ export default {
 @media screen and (max-width: 768px) {
   .DailyQuestion {
     display: flex;
-    margin-top: 74px;
+    margin-top: .74rem;
 
     .left {
       display: none;
@@ -285,33 +344,42 @@ export default {
       width: 100%;
 
       .contentTitle {
-        padding: 20px 20px 10px 20px;
+        padding: .20rem .20rem .10rem .20rem;
         font-weight: 700;
-        font-size: 20px;
+        font-size: .20rem;
 
         &:before {
           content: '';
-          padding: 0 3px;
+          padding: 0 .03rem;
           background: #3eaf7c;
-          margin-right: 10px;
+          margin-right: .10rem;
         }
       }
 
       .showInfo {
         display: flex;
         align-items: center;
-        font-size: 16px;
+        font-size: .16rem;
         color: #3eaf7c;
-        padding: 20px;
+        padding: .20rem;
 
         .sm_title {
           color: '#3eaf7c';
-          font-size: 16px;
+          font-size: .16rem;
         }
       }
 
       .code {
-        font-size: 16px;
+        font-size: .20rem;
+      }
+
+      .explanation {
+        padding: 0 .20rem;
+        font-size: .20rem;
+        &:before {
+          content: '补充解释：';
+          display: inline-block;
+        }
       }
     }
 
@@ -325,18 +393,18 @@ export default {
 
     .items {
       cursor: pointer;
-      padding: 3px 0;
-      font-size: 14px;
+      padding: .03rem 0;
+      font-size: .14rem;
       transition: all linear 0.25s;
 
       &:hover {
-        transform: translateX(5px);
+        transform: translateX(.05rem);
       }
     }
 
     .showContent {
-      border-radius: 10px;
-      font-size: 20px;
+      border-radius: .10rem;
+      font-size: .20rem;
     }
   }
 }

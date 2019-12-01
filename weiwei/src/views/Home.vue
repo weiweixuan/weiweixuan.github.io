@@ -3,24 +3,31 @@
     <div class="top">
       <!-- 大图 -->
       <div class="banner">
-        <img class="avator" style="maxWidth:600px" width="60%" src="../assets/main.gif" />
+        <img
+          class="avator"
+          style="maxWidth:6rem"
+          width="60%"
+          src="../assets/main.gif"
+        />
       </div>
-      <div class="title">{{home.title}}</div>
-      <div class="subTitle">{{home.subTitle}}</div>
+      <div class="title">{{ home.title }}</div>
+      <div class="subTitle">{{ home.subTitle }}</div>
       <div>
-        <van-button type="primary" color="#3EAF7C" class="btn" @click="skip">{{home.btn}}</van-button>
+        <van-button type="primary" color="#3EAF7C" class="btn" @click="skip">{{
+          home.btn
+        }}</van-button>
       </div>
       <!-- 底部展示部分 -->
       <div class="bottomList">
-        <div class="item" v-for='(item,index) in home.showList' :key='index'>
-          <div class="titles">{{item.title}}</div>
-          <div class="content">{{item.content}}</div>
+        <div class="item" v-for="(item, index) in home.showList" :key="index">
+          <div class="titles">{{ item.title }}</div>
+          <div class="content">{{ item.content }}</div>
         </div>
       </div>
     </div>
     <!-- 页脚商标 -->
     <div class="copyRight">
-      {{home.copyright}}
+      {{ home.copyright }}
     </div>
   </div>
 </template>
@@ -52,15 +59,15 @@ export default {
 <style lang="stylus">
 @media screen and (min-width: 1050px) {
   .home {
-    margin-top: 74px;
-    min-height: calc(100vh - 74px);
+    margin-top: .74rem;
+    min-height: calc(100vh - .74rem);
     display: flex;
     flex-direction: column;
 
     .copyRight {
-      padding: 20px;
+      padding: .20rem;
       text-align: center;
-      font-size: 16px;
+      font-size: .16rem;
       color: #4e6e8e;
     }
   }
@@ -68,49 +75,53 @@ export default {
   .top {
     flex: 1;
     text-align: center;
-    padding-top: 80px;
-    font-size: 30px;
+    padding-top: .80rem;
+    font-size: .30rem;
     transition: all linear 1s;
 
     .title {
       font-weight: 700;
-      font-size: 48px;
-      margin-top: 29px;
+      font-size: .48rem;
+      margin-top: .29rem;
     }
 
     .subTitle {
-      font-size: 28px;
-      margin-top: 29px;
+      font-size: .28rem;
+      margin-top: .29rem;
       color: #6A8BAD;
     }
 
-    .btn {
-      border-radius: 5px;
-      margin-top: 29px;
+     .btn {
+      width:1.5rem;
+      height :.42rem;
+      font-size :.16rem;
+      border-radius: 5rem;
+      margin-top: .29rem;
+      line-height :.42rem;
     }
   }
 
   .bottomList {
     width: 80%;
-    max-width: 1000px;
+    max-width: 10rem;
     height: auto;
-    margin: 40px auto 0;
-    padding: 10px 0;
+    margin: .40rem auto 0;
+    padding: .10rem 0;
     display: flex;
-    border-top: 1px solid #eaecef;
-    border-bottom: 1px solid #eaecef;
+    border-top: .01rem solid #eaecef;
+    border-bottom: .01rem solid #eaecef;
 
     .item {
       flex: 1;
-      padding: 20px 30px;
+      padding: .20rem .30rem;
 
       .titles {
-        font-size: 22px;
-        margin-bottom: 10px;
+        font-size: .22rem;
+        margin-bottom: .10rem;
       }
 
       .content {
-        font-size: 16px;
+        font-size: .16rem;
         color: #4E6E8E;
         text-align: left;
       }
@@ -120,15 +131,15 @@ export default {
 
 @media screen and (min-width: 768px) and (max-width: 1050px) {
   .home {
-    margin-top: 74px;
-    min-height: calc(100vh - 74px);
+    margin-top: .74rem;
+    min-height: calc(100vh - .74rem);
     display: flex;
     flex-direction: column;
 
     .copyRight {
-      padding: 20px;
+      padding: .20rem;
       text-align: center;
-      font-size: 16px;
+      font-size: .16rem;
       color: #4e6e8e;
     }
   }
@@ -136,49 +147,53 @@ export default {
   .top {
     flex: 1;
     text-align: center;
-    padding-top: 30px;
+    padding-top: .50rem;
     transition: all linear 1s;
-    font-size: 30px;
+    font-size: .30rem;
 
     .title {
       font-weight: 700;
-      font-size: 30px;
-      margin-top: 29px;
+      font-size: .30rem;
+      margin-top: .29rem;
     }
 
     .subTitle {
-      font-size: 20px;
-      margin-top: 29px;
+      font-size: .20rem;
+      margin-top: .29rem;
       color: #6A8BAD;
     }
 
-    .btn {
-      border-radius: 5px;
-      margin-top: 29px;
+     .btn {
+      width:1.5rem;
+      height :.42rem;
+      font-size :.16rem;
+      border-radius: 5rem;
+      margin-top: .29rem;
+      line-height :.42rem;
     }
   }
 
   .bottomList {
     width: 80%;
-    max-width: 1000px;
+    max-width: 10rem;
     height: auto;
-    margin: 40px auto 0;
-    padding: 10px 0;
+    margin: .40rem auto 0;
+    padding: .10rem 0;
     display: flex;
-    border-top: 1px solid #eaecef;
-    border-bottom: 1px solid #eaecef;
+    border-top: .01rem solid #eaecef;
+    border-bottom: .01rem solid #eaecef;
 
     .item {
       flex: 1;
-      padding: 20px 30px;
+      padding: .20rem .30rem;
 
       .titles {
-        font-size: 22px;
-        margin-bottom: 10px;
+        font-size: .22rem;
+        margin-bottom: .10rem;
       }
 
       .content {
-        font-size: 16px;
+        font-size: .16rem;
         color: #4E6E8E;
         text-align: left;
       }
@@ -188,15 +203,15 @@ export default {
 
 @media screen and (max-width: 768px) {
   .home {
-    margin-top: 74px;
-    min-height: calc(100vh - 74px);
+    margin-top: .74rem;
+    min-height: calc(100vh - .74rem);
     display: flex;
     flex-direction: column;
 
     .copyRight {
-      padding: 20px;
+      padding: .20rem;
       text-align: center;
-      font-size: 12px;
+      font-size: .12rem;
       color: #4e6e8e;
     }
   }
@@ -204,49 +219,53 @@ export default {
   .top {
     flex: 1;
     text-align: center;
-    padding-top: 30px;
+    padding-top: .80rem;
     transition: all linear 1s;
-    font-size: 30px;
+    font-size: .30rem;
 
     .title {
       font-weight: 700;
-      font-size: 30px;
-      margin-top: 29px;
+      font-size: .30rem;
+      margin-top: .29rem;
     }
 
     .subTitle {
-      font-size: 20px;
-      margin-top: 29px;
+      font-size: .20rem;
+      margin-top: .29rem;
       color: #6A8BAD;
     }
 
     .btn {
-      border-radius: 5px;
-      margin-top: 29px;
+      width:1.5rem;
+      height :.42rem;
+      font-size :.16rem;
+      border-radius: 5rem;
+      margin-top: .29rem;
+      line-height :.42rem;
     }
   }
 
   .bottomList {
     width: 80%;
     height: auto;
-    min-width: 360px;
-    margin: 20px auto 0;
-    padding: 10px 0;
+    min-width: 3.60rem;
+    margin: .20rem auto 0;
+    padding: .10rem 0;
     flex-direction: columns;
-    border-top: 1px solid #eaecef;
-    border-bottom: 1px solid #eaecef;
+    border-top: .01rem solid #eaecef;
+    border-bottom: .01rem solid #eaecef;
 
     .item {
-      padding: 10px 30px;
+      padding: .10rem .30rem;
 
       .titles {
-        font-size: 20px;
-        margin-bottom: 5px;
+        font-size: .20rem;
+        margin-bottom: .05rem;
         text-align: left;
       }
 
       .content {
-        font-size: 16px;
+        font-size: .16rem;
         color: #4E6E8E;
         text-align: left;
       }
