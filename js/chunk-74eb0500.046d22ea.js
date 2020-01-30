@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-74eb0500"],{"7b21":function(n,t,e){"use strict";var i=e("9295"),s=e.n(i);s.a},9295:function(n,t,e){},b5cd:function(n,t,e){"use strict";e.r(t);var i=function(){var n=this,t=n.$createElement,e=n._self._c||t;return e("div",{staticClass:"DailyQuestion"},[n._v(" 每日壹题 ")])},s=[],u={name:"DailyQuestion"},a=u,c=(e("7b21"),e("2877")),l=Object(c["a"])(a,i,s,!1,null,null,null);t["default"]=l.exports}}]);
-//# sourceMappingURL=chunk-74eb0500.046d22ea.js.map
