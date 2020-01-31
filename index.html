@@ -20,6 +20,7 @@
       #box {
         padding: 500px 0 0 0;
         text-align: center;
+        overflow: hidden;
       }
       #box::before {
         content: '';
@@ -177,14 +178,14 @@
       /*
         鼠标提起时不再btn按钮上的补丁事件
       */
-      document.body.addEventListener('mouseup', function() {
+      document.body.addEventListener('touchend', function() {
         normal(btn)
       })
 
-      zan.addEventListener('mousedown', function(e) {
+      zan.addEventListener('touchstart', function(e) {
         active(this)
       })
-      zan.addEventListener('mouseup', function(e) {
+      zan.addEventListener('touchend', function(e) {
         normal(this)
       })
     })()
